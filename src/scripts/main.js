@@ -25,6 +25,24 @@ function main() {
 
   	const insertBook = (book) => {
     	// tuliskan kode di sini!
+		const xhr = new XMLHttpRequest();
+
+		xhr.onload = function () {
+			const responseJson = JSON.parse(this.responseText)
+			showResponseMessage(responseJson.message);
+			getBook();
+		}
+
+		xhr.onerror = function () {
+			showResponseMessage();
+		}
+
+		xhr.open('POST', 'https://books-api.dicoding.dev/add');
+
+		xhr.setRequestHeader('Content-Type', 'application/json');
+		xhr.setRequestHeader('X-Auth-Token', '12345')
+
+		xhr.send(JSON.stringify(book));
   	};
 
   	const updateBook = (book) => {
