@@ -1,5 +1,5 @@
 function main() {
-	const baseUrl = 'https://books-api.dicoding.dev/add';
+	const baseUrl = 'https://books-api.dicoding.dev';
 
 	const getBook = () => {
     	// tuliskan kode di sini!
@@ -41,15 +41,34 @@ function main() {
 		xhr.open('POST', `${baseUrl}/add`);						 	 // Membuat POST request dan menetapkan target URL  /* Oiya, kita juga dapat menyederhanakan penulisan target URL dengan memisahkan nilai base url dan endpoint. */
 
 		xhr.setRequestHeader('Content-Type', 'application/json');	 // Mementapkan properti Content-Type dan X-Auth-Token pada Header request
-		xhr.setRequestHeader('X-Auth-Token', '12345')
+		xhr.setRequestHeader('X-Auth-Token', '12345');
 
 		xhr.send(JSON.stringify(book));								 // Mengirimkan request dan menyisipkan JSON.stringify(book) pada body
   	};
 
-	
+
   	const updateBook = (book) => {
     	// tuliskan kode di sini!
+		const xhr = new XMLHttpRequest();
+
+		xhr.onload = function () {
+			const responseJson = JSON.parse(this.responseText)
+			showResponseMessage(responseJson.message);
+			getBook();
+		}
+
+		xhr.onerror = function () {
+			showResponseMessage();
+		}
+
+		xhr.open('PUT', `${baseUrl}/edit/${book.id}`);
+
+		xhr.setRequestHeader('Content-Type', 'application/json');
+		xhr.setRequestHeader('X-Auth-Token', '12345');
+
+		xhr.send(JSON.stringify(book));
   	};
+
 
   	const removeBook = (bookId) => {
     	// tuliskan kode di sini!
