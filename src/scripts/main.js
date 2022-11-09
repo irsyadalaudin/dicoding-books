@@ -1,4 +1,5 @@
 function main() {
+	const baseUrl = 'https://books-api.dicoding.dev/add';
 
 	const getBook = () => {
     	// tuliskan kode di sini!
@@ -18,7 +19,7 @@ function main() {
 			showResponseMessage();
 		};
 
-		xhr.open('GET', 'https://books-api.dicoding.dev/list');
+		xhr.open('GET', `${baseUrl}/list`);
 		xhr.send();
 	};
 
@@ -37,7 +38,7 @@ function main() {
 			showResponseMessage();
 		}
 
-		xhr.open('POST', 'https://books-api.dicoding.dev/add');
+		xhr.open('POST', `${baseUrl}/add`);
 
 		xhr.setRequestHeader('Content-Type', 'application/json');
 		xhr.setRequestHeader('X-Auth-Token', '12345')
