@@ -18,7 +18,7 @@ function main() {
 			showResponseMessage();
 		};
 
-		xhr.open('GET', 'http');
+		xhr.open('GET', 'https://books-api.dicoding.dev/list');
 		xhr.onsend();
 	};
 
