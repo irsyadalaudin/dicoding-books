@@ -4,7 +4,7 @@ function main() {
     	// tuliskan kode di sini!
 		const xhr = new XMLHttpRequest();
 
-		xhr.onload = function() {
+		xhr.onload = function () {
 			const responseJson = JSON.parse(this.responseText)
 			
 			if (responseJson.error) {
@@ -14,12 +14,12 @@ function main() {
 			}
 		};
 
-		xhr.onerror = function() {
+		xhr.onerror = function () {
 			showResponseMessage();
 		};
 
 		xhr.open('GET', 'https://books-api.dicoding.dev/list');
-		xhr.onsend();
+		xhr.send();
 	};
 
 
