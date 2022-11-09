@@ -1,21 +1,39 @@
 function main() {
 
-  const getBook = () => {
-    // tuliskan kode di sini!
-  };
+	const getBook = () => {
+    	// tuliskan kode di sini!
+		const xhr = new XMLHttpRequest();
+
+		xhr.onload = function() {
+			const responseJson = JSON.parse(this.responseText)
+			
+			if(responseJson.error) {
+				showResponseMessage(responseJson.message);
+			} else {
+				renderAllBooks(responseJson.books);
+			}
+		};
+
+		xhr.onerror = function() {
+			showResponseMessage();
+		};
+
+		xhr.open('GET', 'http');
+		xhr.onsend();
+	};
 
 
-  const insertBook = (book) => {
-    // tuliskan kode di sini!
-  };
+  	const insertBook = (book) => {
+    	// tuliskan kode di sini!
+  	};
 
-  const updateBook = (book) => {
-    // tuliskan kode di sini!
-  };
+  	const updateBook = (book) => {
+    	// tuliskan kode di sini!
+  	};
 
-  const removeBook = (bookId) => {
-    // tuliskan kode di sini!
-  };
+  	const removeBook = (bookId) => {
+    	// tuliskan kode di sini!
+  	};
 
 
   

@@ -1,5 +1,5 @@
 /*
-        jangan ubah kode di bawah ini ya!
+    jangan ubah kode di bawah ini ya!
 */
 
 import 'regenerator-runtime';
