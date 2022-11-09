@@ -7,7 +7,7 @@ function main() {
 		xhr.onload = function() {
 			const responseJson = JSON.parse(this.responseText)
 			
-			if(responseJson.error) {
+			if (responseJson.error) {
 				showResponseMessage(responseJson.message);
 			} else {
 				renderAllBooks(responseJson.books);
