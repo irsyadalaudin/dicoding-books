@@ -49,9 +49,9 @@ function main() {
 
   	const updateBook = (book) => {
     	// tuliskan kode di sini!
-		const xhr = new XMLHttpRequest();
+		const xhr = new XMLHttpRequest();							 // Membuat instance dari XMLHttpRequest
 
-		xhr.onload = function () {
+		xhr.onload = function () {									 // menetapkan callback jika response sukses dan error
 			const responseJson = JSON.parse(this.responseText)
 			showResponseMessage(responseJson.message);
 			getBook();
@@ -61,12 +61,12 @@ function main() {
 			showResponseMessage();
 		}
 
-		xhr.open('PUT', `${baseUrl}/edit/${book.id}`);
+		xhr.open('PUT', `${baseUrl}/edit/${book.id}`);				 // Membuat PUT request dan menetapkan target URL
 
-		xhr.setRequestHeader('Content-Type', 'application/json');
+		xhr.setRequestHeader('Content-Type', 'application/json');	 // Mementapkan properti Content-Type dan X-Auth-Token pada Header request
 		xhr.setRequestHeader('X-Auth-Token', '12345');
 
-		xhr.send(JSON.stringify(book));
+		xhr.send(JSON.stringify(book));								 // Mengirimkan request dan menyisipkan JSON.stringify(book) pada body
   	};
 
 
