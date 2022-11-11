@@ -2,7 +2,6 @@ function main() {
 	const baseUrl = 'https://books-api.dicoding.dev';
 
 	const getBook = () => {
-    	// tuliskan kode di sini!
 		const xhr = new XMLHttpRequest();							 // membuat instance dari XMLHttpRequest
 
 		xhr.onload = function () {									 // menetapkan callback jika response sukses dan error
@@ -25,7 +24,6 @@ function main() {
 
 
   	const insertBook = (book) => {
-    	// tuliskan kode di sini!
 		const xhr = new XMLHttpRequest();							 // Membuat instance dari XMLHttpRequest
 
 		xhr.onload = function () {									 // menetapkan callback jika response sukses dan error
@@ -48,7 +46,6 @@ function main() {
 
 
   	const updateBook = (book) => {
-    	// tuliskan kode di sini!
 		const xhr = new XMLHttpRequest();							 // Membuat instance dari XMLHttpRequest
 
 		xhr.onload = function () {									 // menetapkan callback jika response sukses dan error
@@ -71,7 +68,6 @@ function main() {
 
 
   	const removeBook = (bookId) => {
-    	// tuliskan kode di sini!
 		const xhr = new XMLHttpRequest();							 // Membuat instance dari XMLHttpRequest
 
 		xhr.onload = function () {								     // menetapkan callback jika response sukses dan error
