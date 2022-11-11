@@ -5,7 +5,7 @@ function main() {
     	// tuliskan kode di sini!
 		const xhr = new XMLHttpRequest();							 // membuat instance dari XMLHttpRequest
 
-		xhr.onload = function () {									 //menetapkan callback jika response sukses dan error
+		xhr.onload = function () {									 // menetapkan callback jika response sukses dan error
 			const responseJson = JSON.parse(this.responseText)
 			
 			if (responseJson.error) {
