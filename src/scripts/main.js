@@ -20,27 +20,30 @@ function main() {
 			showResponseMessage(error);
 		});
 	};
-	
+
 
   	const insertBook = (book) => {
-		const xhr = new XMLHttpRequest();							 // Membuat instance dari XMLHttpRequest
-
-		xhr.onload = function () {									 // menetapkan callback jika response sukses dan error
-			const responseJson = JSON.parse(this.responseText)
+		fetch(`${baseUrl}/add`, {
+			method: 'POST',
+			headers: {
+				'Content-type': 'application/json',
+				'X-Auth-Token': '12345'
+			},
+			body: JSON.stringify(book)
+		})
+		
+		.then(response => {
+			return response.json();
+		})
+		
+		.then(responseJson => {
 			showResponseMessage(responseJson.message);
-			getBook();												 /* Pada akhir kode di atas, kita memanggil fungsi getBook(). Fungsi tersebut perlu kita panggil agar setelah buku berhasil dimasukkan, daftar buku yang ditampilkan pada aplikasi akan ikut diperbarui sehingga data baru akan tampil. Dengan catatan, browser tidak melakukan reload ketika menampilkan data yang baru. */
-		}
-
-		xhr.onerror = function () {
-			showResponseMessage();
-		}
-
-		xhr.open('POST', `${baseUrl}/add`);						 	 // Membuat POST request dan menetapkan target URL  /* Oiya, kita juga dapat menyederhanakan penulisan target URL dengan memisahkan nilai base url dan endpoint. */
-
-		xhr.setRequestHeader('Content-Type', 'application/json');	 // Mementapkan properti Content-Type dan X-Auth-Token pada Header request
-		xhr.setRequestHeader('X-Auth-Token', '12345');
-
-		xhr.send(JSON.stringify(book));								 // Mengirimkan request dan menyisipkan JSON.stringify(book) pada body
+			getBook();
+		})
+		
+		.catch(error => {
+			showResponseMessage(error);
+		});
   	};
 
 
