@@ -2,26 +2,25 @@ function main() {
 	const baseUrl = 'https://books-api.dicoding.dev';
 
 	const getBook = () => {
-		const xhr = new XMLHttpRequest();							 // membuat instance dari XMLHttpRequest
+		fetch(`${baseUrl}/list`)
+		
+		.then(response => {
+			return response.json();
+		})
 
-		xhr.onload = function () {									 // menetapkan callback jika response sukses dan error
-			const responseJson = JSON.parse(this.responseText)
-			
+		.then(responseJson => {
 			if (responseJson.error) {
 				showResponseMessage(responseJson.message);
 			} else {
 				renderAllBooks(responseJson.books);
 			}
-		};
+		})
 
-		xhr.onerror = function () {
-			showResponseMessage();
-		};
-
-		xhr.open('GET', `${baseUrl}/list`);							 // Membuat GET request dan menetapkan target URL  /* Oiya, kita juga dapat menyederhanakan penulisan target URL dengan memisahkan nilai base url dan endpoint. */
-		xhr.send();													 // Mengirimkan request
+		.catch(error => {
+			showResponseMessage(error);
+		});
 	};
-
+	
 
   	const insertBook = (book) => {
 		const xhr = new XMLHttpRequest();							 // Membuat instance dari XMLHttpRequest
